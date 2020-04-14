@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from ckeditor.fields import RichTextField
+import pytz
 
 # Create your models here.
 class displaySilder(models.Model):
@@ -15,7 +16,7 @@ class displaySilder(models.Model):
 
 class setCountdownDate(models.Model):
     eventTitle = models.CharField(max_length=100)
-    eventDate = models.DateField(default=timezone.now, blank=True)
+    eventDate = models.DateField(timezone.activate(pytz.timezone('Africa/Lagos')))
     eventDiscription = models.TextField()
     endTimeMessage = models.CharField(max_length=100)
     active = models.BooleanField()
@@ -34,7 +35,7 @@ class urgentMessage(models.Model):
     Active = models.BooleanField()
     UserTitle = models.ForeignKey(userType, verbose_name= "User Title", on_delete=models.CASCADE)
     userImage = models.ImageField(upload_to='images', verbose_name= 'User Passport(with any background')
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(pytz.timezone('Africa/Lagos'), auto_now_add=True)
     likeCount = models.IntegerField(verbose_name= 'Likes Count')
     messageBody = RichTextField(verbose_name= 'Message Body')
 
