@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import displaySilder, setCountdownDate, userType
+from .models import displaySilder, setCountdownDate, userType, sm_phone_display
 from .models import urgentMessage, sermonUpdate, event, subcribe
 from blog_app.models import blog
 from sunday_school_app.models import englishSchoolA, englishSchoolI, elementarySchool
@@ -9,6 +9,7 @@ from about_app.models import testimony_s
 def index(request):
 
     displaySlider = displaySilder.objects.all()
+    sm_display = sm_phone_display.objects.last()
     setCountdownDateTime = setCountdownDate.objects.last()
     userTypes =  userType.objects.all()
     alertMessage = urgentMessage.objects.last()
@@ -18,6 +19,7 @@ def index(request):
     adult = englishSchoolA.objects.last()
     inter = englishSchoolI.objects.last()
     element = elementarySchool.objects.last()
+    
 
     if request.method == 'POST':
         email = request.POST['sub']
@@ -37,6 +39,7 @@ def index(request):
             'adult':adult,
             'inter': inter,
             'element':element,
+            'sm_display':sm_display,
         }
 
     return render(request, 'index.html', content )

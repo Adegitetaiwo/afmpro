@@ -12,6 +12,16 @@ class displaySilder(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class sm_phone_display(models.Model):
+    title = models.CharField(max_length=150)
+    discriptionTop = models.CharField(blank=True, null=True, max_length=40)
+    discriptionBottom = models.CharField(blank=True, null=True, max_length=100)
+    displayImage = models.ImageField(upload_to='images', height_field=None, width_field=None, max_length=None)
+
+    def __str__(self):
+        return self.title
     
 
 class setCountdownDate(models.Model):

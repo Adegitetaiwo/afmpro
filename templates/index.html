@@ -29,15 +29,37 @@
     <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/slider_style.css' %}">
-    <!--
+    
     <style>
+        .sm-slide {
+                height: 300px;
+                width: 100%;
+                /*margin-bottom: 600px;*/
+        }
+        .sm-slide-item{
+            height: 100%;
+            width: 100%;
+            background-position: center;
+            text-align: center;
+            
+        }
+        .sm-slide-text{
+            padding-top: 80px;
+        }
+
         @media (max-width: 991.98px) {
             .slide {
                 display: none;
             }
         }
+        
+        @media (min-width: 991.98px) {
+            .sm-slide {
+                display: none;
+            }
+        }
     </style>
-    -->
+    
 </head>
 
 <body>
@@ -94,14 +116,14 @@
 
     <!--Page Jump-->
     <div class="slide">
-    <a name = 'home'></a>
-    <section class="home-slider owl-carousel ">
-        {% for displaySlider in displaySliders %}
-
-        <div class="slider-item" style="background-image:url({{displaySlider.displayImage.url}});">
-            <div class="overlay"></div>
-            <div class="container">
-                <div class="row no-gutters slider-text align-items-center justify-content-center"
+        <a name = 'home'></a>
+        <section class="home-slider owl-carousel slide_home">
+            {% for displaySlider in displaySliders %}
+            
+            <div class="slider-item" style="background-image:url({{displaySlider.displayImage.url}});">
+                <div class="overlay"></div>
+                <div class="container">
+                    <div class="row no-gutters slider-text align-items-center justify-content-center"
                     data-scrollax-parent="true">
                     <div class="col-md-8 text-center ftco-animate">
                         
@@ -119,12 +141,26 @@
             </div>
         </div>
         {% endfor %}
-
-
     </section>
     </div>
+
+    <div class="sm-slide">
+        <div class="slider-item sm-slide-item" style="background-image:url({{sm_display.displayImage.url}});">
+            <div class="container text-center sm-slide-text">
+                <h4 class="mb-4" style="color: white; font-weight: bold;">
+                    {% if sm_display.discriptionTop %}
+                    {{sm_display.discriptionTop}}
+                    {% endif %}
+                    {% if sm_display.discriptionBottom %}
+                    <span>{{sm_display.discriptionBottom}}</span>
+                    {% endif %}
+                </h4>
+            </div>
+        </div>
+    </div>
+
+
     <!--Countdown-->
-    
     {% if setCountdownDates.active %}
     <section class="ftco-bible-study">
         <div class="container-wrap">
