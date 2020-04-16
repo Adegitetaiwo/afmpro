@@ -1,5 +1,7 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from cloudinary.models import CloudinaryField
+
 
 # Create your models here.
 class englishSchoolA(models.Model):
@@ -8,7 +10,7 @@ class englishSchoolA(models.Model):
     bibleText = models.CharField(max_length=100)
     memoryVerse = models.TextField()
     body = RichTextField()
-    source = models.FileField(upload_to='media', max_length=500)
+    source = CloudinaryField()
     active = models.BooleanField()
 
     class Meta:
@@ -22,7 +24,7 @@ class frenchSchoolA(models.Model):
     bibleText = models.CharField(max_length=100)
     memoryVerse = models.TextField()
     body = RichTextField()
-    source = models.FileField(upload_to='media', max_length=500)
+    source = CloudinaryField()
     active = models.BooleanField()
     class Meta:
         verbose_name_plural = 'French Sunday Lesson for Adult'
@@ -35,7 +37,7 @@ class yorubaSchoolA(models.Model):
     bibleText = models.CharField(max_length=100)
     memoryVerse = models.TextField()
     body = RichTextField()
-    source = models.FileField(upload_to='media', max_length=500)
+    source = CloudinaryField()
     active = models.BooleanField()
     class Meta:
         verbose_name_plural = 'Yoruba Sunday Lesson for Adult'
@@ -48,7 +50,7 @@ class englishSchoolI(models.Model):
     bibleText = models.CharField(max_length=100)
     memoryVerse = models.TextField()
     body = RichTextField()
-    source = models.FileField(upload_to='media', max_length=500)
+    source = CloudinaryField()
     active = models.BooleanField()
     class Meta:
         verbose_name_plural = 'Enlish Sunday Lesson for Intermediate'
@@ -61,7 +63,7 @@ class frenchSchoolI(models.Model):
     bibleText = models.CharField(max_length=100)
     memoryVerse = models.TextField()
     body = RichTextField()
-    source = models.FileField(upload_to='media', max_length=500)
+    source = CloudinaryField()
     active = models.BooleanField()
     class Meta:
         verbose_name_plural = 'French Sunday Lesson for Intermediate'
@@ -74,7 +76,7 @@ class yorubaSchoolI(models.Model):
     bibleText = models.CharField(max_length=100)
     memoryVerse = models.TextField()
     body = RichTextField()
-    source = models.FileField(upload_to='media', max_length=500)
+    source = CloudinaryField()
     active = models.BooleanField()
     class Meta:
         verbose_name_plural = 'Yoruba Sunday Lesson for Intermediate'
@@ -87,7 +89,7 @@ class elementarySchool(models.Model):
     bibleText = models.CharField(max_length=100)
     memoryVerse = models.TextField()
     body = RichTextField()
-    source = models.FileField(upload_to='media', max_length=500)
+    source = CloudinaryField()
     active = models.BooleanField()
     class Meta:
         verbose_name_plural = 'Enlish Sunday School Lesson for Elementary'

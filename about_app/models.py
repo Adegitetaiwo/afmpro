@@ -1,4 +1,6 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
+
 
 # Create your models here.
 class userDuty(models.Model):
@@ -9,12 +11,12 @@ class userDuty(models.Model):
 class testimony_s(models.Model):
     caption = models.CharField(max_length=100)
     introduction = models.CharField(max_length=2000, blank=True)
-    featuredImage = models.ImageField(upload_to='images', height_field=None, width_field=None, max_length=None)
+    featuredImage = CloudinaryField()
     body = models.TextField()
     username = models.CharField(max_length=50)
     comment = models.IntegerField()
     date = models.DateField(auto_now_add=True)
-    userPicture = models.ImageField(upload_to='images', height_field=None, width_field=None, max_length=None, default='static/images/default-avatar.png')
+    userPicture = CloudinaryField()
     UserDuty = models.ForeignKey(userDuty, verbose_name='Duty In The Church', on_delete=models.CASCADE)
 
     def __str__(self):
@@ -23,7 +25,7 @@ class testimony_s(models.Model):
 class firstMinister(models.Model):
     ministerName = models.CharField(max_length=50, verbose_name= "Minister's Name")
     position = models.CharField(max_length=50, verbose_name='Duty in Church')
-    picture = models.ImageField(upload_to='images', height_field=None, width_field=None, max_length=None)
+    picture = CloudinaryField()
 
     def __str__(self):
         return self.ministerName
@@ -31,7 +33,7 @@ class firstMinister(models.Model):
 class secondMinister(models.Model):
     ministerName = models.CharField(max_length=50, verbose_name= "Minister's Name")
     position = models.CharField(max_length=50, verbose_name='Duty in Church')
-    picture = models.ImageField(upload_to='images', height_field=None, width_field=None, max_length=None)
+    picture = CloudinaryField()
 
     def __str__(self):
         return self.ministerName
@@ -39,7 +41,7 @@ class secondMinister(models.Model):
 class thirdMinister(models.Model):
     ministerName = models.CharField(max_length=50, verbose_name= "Minister's Name")
     position = models.CharField(max_length=50, verbose_name='Duty in Church')
-    picture = models.ImageField(upload_to='images', height_field=None, width_field=None, max_length=None)
+    picture = CloudinaryField()
 
     def __str__(self):
         return self.ministerName

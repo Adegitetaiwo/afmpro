@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class liveForcast(models.Model):
@@ -7,7 +8,7 @@ class liveForcast(models.Model):
     introduction = models.TextField(default=True, blank=True)
     date = models.DateTimeField(default=timezone.now, blank=True)
     watching = models.IntegerField()
-    image = models.ImageField(upload_to='images', height_field=None, width_field=None, max_length=None)
+    image = CloudinaryField()
     source = models.URLField(max_length=500)
     active = models.BooleanField()
 
