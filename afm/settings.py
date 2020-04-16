@@ -27,7 +27,7 @@ SECRET_KEY = 'q)ec2)#-m@%a7qmyn_rhtc4o*s2ke3n6lw0e8^&uhxh6kyjv3j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['afmdjango.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'account',
     'ckeditor',
+    'cloudinary',
     'main_app',
     'about_app',
     'audio_app',
@@ -163,3 +164,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+
+cloudinary.config( 
+  cloud_name = "afmdjango", 
+  api_key="155368314611262",
+  api_secret="qvODORhvVicvB-iWyU4z8C9SLDA"
+)
